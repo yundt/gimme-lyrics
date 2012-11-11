@@ -1,0 +1,8 @@
+{
+  "BundleType": "Application",
+  "BundleIdentifier": "gimme-lyrics",
+  "AppName": {
+    "en": "Gimme lyrics!"
+  },
+  "SupportedLanguages": ["en"]
+}
