@@ -1,13 +1,7 @@
 window.onload = ->
-  GL.sp = getSpotifyApi 1
-  GL.models = GL.sp.require 'sp://import/scripts/api/models'
-  GL.player = GL.models.player
+  GL.init()
 
-  GL.elements = {}
+  GL.updateView()
 
-  GL.elements.titleElement = document.getElementById 'title'
-  GL.elements.artistElement = document.getElementById 'artist'
-
-  if GL.player.track
-    GL.elements.titleElement.innerHTML = GL.player.track.name
-    GL.elements.artistElement.innerHTML = GL.player.track.artists[0].toString()
+  GL.player.observe GL.models.EVENT.CHANGE, (event) ->
+    GL.updateView() if event.data.curtrack
