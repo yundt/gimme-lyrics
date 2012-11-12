@@ -7,7 +7,8 @@
     GL.player = GL.models.player;
     GL.elements = {};
     GL.elements.titleElement = document.getElementById('title');
-    return GL.elements.artistElement = document.getElementById('artist');
+    GL.elements.artistElement = document.getElementById('artist');
+    return GL.elements.lyricsElement = document.getElementById('lyrics');
   };
 
 }).call(this);

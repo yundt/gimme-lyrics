@@ -2,9 +2,13 @@
 (function() {
 
   GL.updateView = function() {
+    var artist, title;
     if (GL.player.track) {
-      GL.elements.titleElement.innerHTML = GL.player.track.name;
-      return GL.elements.artistElement.innerHTML = GL.player.track.artists[0].toString();
+      artist = GL.player.track.artists[0].toString();
+      title = GL.player.track.name;
+      GL.elements.titleElement.innerHTML = title;
+      GL.elements.artistElement.innerHTML = artist;
+      return GL.displayLyricsFor(artist, title);
     }
   };
 

@@ -7,3 +7,4 @@ GL.init = ->
 
   GL.elements.titleElement = document.getElementById 'title'
   GL.elements.artistElement = document.getElementById 'artist'
+  GL.elements.lyricsElement = document.getElementById 'lyrics'

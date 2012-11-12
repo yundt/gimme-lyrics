@@ -4,5 +4,8 @@
   "AppName": {
     "en": "Gimme lyrics!"
   },
-  "SupportedLanguages": ["en"]
+  "SupportedLanguages": ["en"],
+  "RequiredPermissions": [
+    "http://lyrics.wikia.com"
+  ]
 }
