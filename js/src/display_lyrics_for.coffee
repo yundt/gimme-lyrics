@@ -1,4 +1,6 @@
 GL.displayLyricsFor = (artist, title) ->
+  title = title.split(' - ')[0] if title.match /remaster/i
+
   # prepare artist and title to be arguments for the service
   artist = artist.replace ' ', '_'
   title = title.replace ' ', '_'

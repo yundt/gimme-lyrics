@@ -3,6 +3,9 @@
 
   GL.displayLyricsFor = function(artist, title) {
     var request;
+    if (title.match(/remaster/i)) {
+      title = title.split(' - ')[0];
+    }
     artist = artist.replace(' ', '_');
     title = title.replace(' ', '_');
     request = new XMLHttpRequest();
