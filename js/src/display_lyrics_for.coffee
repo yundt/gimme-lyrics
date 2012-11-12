@@ -8,6 +8,8 @@ GL.displayLyricsFor = (artist, title) ->
   request = new XMLHttpRequest()
   request.open 'GET', "http://lyrics.wikia.com/#{artist}:#{title}"
 
+  lyrics = '(no lyrics found)'
+
   request.onreadystatechange = ->
     if request.readyState == 4 and request.status == 200
       lyricsDocument = document.implementation.createHTMLDocument 'lyrics'
@@ -18,10 +20,6 @@ GL.displayLyricsFor = (artist, title) ->
         .replace(/<br>/g, '\n') # ...to convert breaks into newline characters...
         .replace(/<.+>/g, '') # ...to safely strip all other tags...
         .replace(/\n/g, '<br>') # ...and put breaks back where they belong
-
-      lyrics = '(no lyrics found)' if lyrics.length == 0
-    else
-      lyrics = '(no lyrics found)'
 
     GL.elements.lyricsElement.innerHTML = lyrics
 

@@ -2,7 +2,7 @@
 (function() {
 
   GL.displayLyricsFor = function(artist, title) {
-    var request;
+    var lyrics, request;
     if (title.match(/remaster/i)) {
       title = title.split(' - ')[0];
     }
@@ -10,17 +10,13 @@
     title = title.replace(' ', '_');
     request = new XMLHttpRequest();
     request.open('GET', "http://lyrics.wikia.com/" + artist + ":" + title);
+    lyrics = '(no lyrics found)';
     request.onreadystatechange = function() {
-      var lyrics, lyricsDocument;
+      var lyricsDocument;
       if (request.readyState === 4 && request.status === 200) {
         lyricsDocument = document.implementation.createHTMLDocument('lyrics');
         lyricsDocument.documentElement.innerHTML = request.responseText;
         lyrics = lyricsDocument.getElementsByClassName('lyricbox')[0].innerHTML.replace(/\n/g, '').replace(/<br>/g, '\n').replace(/<.+>/g, '').replace(/\n/g, '<br>');
-        if (lyrics.length === 0) {
-          lyrics = '(no lyrics found)';
-        }
-      } else {
-        lyrics = '(no lyrics found)';
       }
       return GL.elements.lyricsElement.innerHTML = lyrics;
     };
